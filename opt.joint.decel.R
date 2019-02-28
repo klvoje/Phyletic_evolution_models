@@ -14,7 +14,7 @@ opt.joint.decel<-function (y, pool = TRUE, cl = list(fnscale = -1), meth = "L-BF
   cl$ndeps[cl$ndeps == 0] <- 1e-08
   if (meth == "L-BFGS-B") 
     w <- optim(p0, fn = logL.joint.accel_decel, control = cl, method = meth, 
-               lower = c(NA, 0, NA), upper = (c(NA, NA,-0.00001)), hessian = hess, y = y)
+               lower = c(NA, 0, NA), upper = (c(NA, NA, -1e-08)), hessian = hess, y = y)
   else w <- optim(p0, fn = logL.joint.accel_decel, control = cl, method = meth, lower = c(NA, 0, NA), 
                   upper = (c(NA, NA,0)), hessian = hess, y = y)
   
